@@ -1,10 +1,10 @@
-name: climate
+name: climaxto
 channels:
   - defaults
   - conda-forge
 dependencies:
   - pip
-  - python==3.10
+  - python==3.9
   - numpy
   - pandas
   - geopandas
@@ -25,5 +25,11 @@ dependencies:
   - shapely
   - fiona
   - earthengine-api
-
+  - netcdf4
+  - h5netcdf
+  - conda-forge:
+    - xarray 
+    - dask
+    - netCDF4
+    - bottleneck
 
