@@ -1,0 +1,29 @@
+name: climate
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - pip
+  - python==3.10
+  - numpy
+  - pandas
+  - geopandas
+  - seaborn
+  - scikit-learn
+  - ipykernel
+  - ipython
+  - jupyter
+  - matplotlib
+  - requests
+  - nb_conda_kernels
+  - scikit-learn-intelex
+  - geemap
+  - leafmap
+  - eefolium
+  - rasterio
+  - xarray
+  - shapely
+  - fiona
+  - earthengine-api
+
+
