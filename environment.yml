@@ -32,4 +32,6 @@ dependencies:
     - dask
     - netCDF4
     - bottleneck
+    - rioxarray
+    
 
