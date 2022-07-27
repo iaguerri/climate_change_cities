@@ -21,11 +21,22 @@ The installation process is the next:
 ### :computer: **Technology stack**
 ------
 - Jupyter Notebook
+- Vue
+- Leaflet
+- Docker
+- Geoserver
+
 
 ------
 ### :boom: **Analysis developed**
 
 
+https://github.com/meteofi/docker-geoserver
+
 ----
 ### :boom: **Conclusions**
 
+
+
+
+La infraestructura del proyecto está montada en docker. 

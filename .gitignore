@@ -130,6 +130,9 @@ dmypy.json
 
 
 #IAV
-pdf/
 data/old_data
-data/sis-water-level-change-timeseries-cmip6_historical
+data/sea_level
+data/sea_level/historical/
+data/sea_level/future/
+.vscode/
+docker/
