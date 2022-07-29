@@ -1,6 +1,7 @@
 # In which city 
 ### :page_facing_up: **Objective**
 In which city will you not be able to live in 50 years?
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/35624830/181708110-4adaf846-295d-4576-bdc1-c635ea5f6ff0.gif)
 
 ### :nut_and_bolt: **Deployment**
 #### :key: Prerequisites
@@ -30,13 +31,7 @@ The installation process is the next:
 ------
 ### :boom: **Analysis developed**
 
-
-https://github.com/meteofi/docker-geoserver
-
-----
-### :boom: **Conclusions**
-
-
-
-
-La infraestructura del proyecto está montada en docker. 
+- EDA
+- Treat NC
+- Create Rasters to visualize
+- Explore
