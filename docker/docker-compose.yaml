@@ -1,0 +1,48 @@
+version: '3.6'
+services:
+  db:
+    image: postgres
+    container_name: climate-docker-db
+    environment:
+      POSTGRES_PASSWORD: climate_change
+      POSTGRES_USER: climate_change
+      POSTGRES_DB: climate
+    ports:
+      - target: 5432
+        published: 5433
+        protocol: tcp
+        mode: host
+    networks:
+      - backdb
+    expose: 
+      - 5433
+  
+  back:
+    build: 
+      context: ./back
+      target:  finalApp
+    image: climate/climate-back
+    container_name: climate-backend
+    ports:
+      - 9090:9090
+    depends_on:
+      - db
+    networks:
+      - backdb
+
+  front:
+    build: ./front
+    image: climate/climate-front
+    container_name: climate-frontend
+    ports:
+      - 8887:8887
+    depends_on:
+      - back
+    networks: 
+      - frontback     
+  
+networks: 
+  backdb:
+    driver: bridge
+  frontback:
+    driver: bridge
