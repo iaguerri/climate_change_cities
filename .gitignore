@@ -130,13 +130,13 @@ dmypy.json
 
 
 #IAV
-data/old_data
-data/sea_level
-data/sea_level/historical/
-data/sea_level/future/
+Jupyter/data/old_data
+Jupyter/data/sea_level
+Jupyter/data/sea_level/historical/
+Jupyter/data/sea_level/future/
+Jupyter/.ipynb_checkpoints
 .vscode/
 docker/docker-comands.txt
-sql
 
 
 # Logs
