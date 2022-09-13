@@ -3,7 +3,7 @@ services:
   jupyter:
     build:
       context: ./jupyter
-      dockerfile: ./jupyter/Dockerfile
+      # dockerfile: ./jupyter/Dockerfile
     ports:
       - "9999:9999"
     links:
@@ -50,10 +50,10 @@ services:
   front:
     build:
       context: ./climate-front
-      dockerfile: ./climate-front/Dockerfile
+      # dockerfile: dockerfile
     volumes:
       - '.:/climate-front'
-      - '/climate-front/node_modules'
+      - '.:/climate-front/node_modules'
     image: climate/climate-front
     container_name: climate-frontend
     ports:

@@ -3,7 +3,7 @@ FROM node:latest
 
 WORKDIR /climate-front
 
-ENV PATH node_modules/.bin:$PATH
+ENV PATH /climate-front/node_modules/.bin:$PATH
 
 COPY package.json ./
 
