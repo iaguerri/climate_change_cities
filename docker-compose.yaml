@@ -3,22 +3,22 @@ services:
   jupyter:
     build:
       context: ./jupyter
-      # dockerfile: ./jupyter/Dockerfile
     ports:
-      - "9999:9999"
+      - "8888:8888"
     links:
       - db
     volumes:
-      - "./notebooks:/notebooks"
       - "./notebooks:/data"
 
   geoserver:
-    build:
-      context: ./geoserver
-      args:
-        - GEOSERVER_VERSION=2.21.1
-        - CORS_ENABLED=true
-        - CORS_ALLOWED_METHODS=GET,POST,PUT,HEAD,OPTIONS
+    image: docker.osgeo.org/geoserver:2.21.1
+
+    # build:
+    #   context: ./geoserver
+    #   args:
+    #     - GEOSERVER_VERSION=2.21.1
+    #     - CORS_ENABLED=true
+    #     - CORS_ALLOWED_METHODS=GET,POST,PUT,HEAD,OPTIONS
     ports:
       - 80:8080
     environment:
@@ -26,8 +26,8 @@ services:
       - STABLE_EXTENSIONS=wps,csw,wmts-multi-dimensional,gdal
       - EXTRA_JAVA_OPTS=-Xms1G -Xmx2G
     volumes:
-      - ./geoserver_data:/opt/geoserver_data/:Z
-      - ./additional_libs:/opt/additional_libs:Z # by mounting this we can install libs from host on startup
+      - ./geoserver/geoserver_data:/opt/geoserver_data/:Z
+      # - ./additional_libs:/opt/additional_libs:Z # by mounting this we can install libs from host on startup
 
   db:
     image: postgis/postgis
@@ -48,16 +48,15 @@ services:
       - 5433
 
   front:
-    build:
-      context: ./climate-front
-      # dockerfile: dockerfile
+    build: ./climate-front
+      # context: ./climate-front
+      # dockerfile: Dockerfile
     volumes:
-      - '.:/climate-front'
-      - '.:/climate-front/node_modules'
+      - './climate-front:/climate-front'
     image: climate/climate-front
-    container_name: climate-frontend
+    container_name: climate-front
     ports:
-      - '8887:8887'
+      - '5003:5003'
     # depends_on:
     #   - back
     networks:

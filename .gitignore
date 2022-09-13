@@ -138,6 +138,8 @@ jupyter/.ipynb_checkpoints
 .vscode/
 docker/docker-comands.txt
 notebooks/data
+geoserver/geoserver_data
+
 
 
 # Logs
