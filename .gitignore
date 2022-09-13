@@ -130,13 +130,14 @@ dmypy.json
 
 
 #IAV
-Jupyter/data/old_data
-Jupyter/data/sea_level
-Jupyter/data/sea_level/historical/
-Jupyter/data/sea_level/future/
-Jupyter/.ipynb_checkpoints
+jupyter/data/old_data
+jupyter/data/sea_level
+jupyter/data/sea_level/historical/
+jupyter/data/sea_level/future/
+jupyter/.ipynb_checkpoints
 .vscode/
 docker/docker-comands.txt
+notebooks/data
 
 
 # Logs
@@ -148,7 +149,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+climate-front/node_modules
 .DS_Store
 dist
 dist-ssr

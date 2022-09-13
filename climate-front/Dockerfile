@@ -3,12 +3,12 @@ FROM node:latest
 
 WORKDIR /climate-front
 
-ENV PATH /climate_front/node_modules/.bin:$PATH
+ENV PATH node_modules/.bin:$PATH
 
-COPY package.json /climate_front/package.json
+COPY package.json ./
 
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 5003
 
 CMD ["npm", "run", "dev"]

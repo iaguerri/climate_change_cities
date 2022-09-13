@@ -1,5 +1,34 @@
-version: '3.6'
+version: '3.8'
 services:
+  jupyter:
+    build:
+      context: ./jupyter
+      dockerfile: ./jupyter/Dockerfile
+    ports:
+      - "9999:9999"
+    links:
+      - db
+    volumes:
+      - "./notebooks:/notebooks"
+      - "./notebooks:/data"
+
+  geoserver:
+    build:
+      context: ./geoserver
+      args:
+        - GEOSERVER_VERSION=2.21.1
+        - CORS_ENABLED=true
+        - CORS_ALLOWED_METHODS=GET,POST,PUT,HEAD,OPTIONS
+    ports:
+      - 80:8080
+    environment:
+      - INSTALL_EXTENSIONS=true
+      - STABLE_EXTENSIONS=wps,csw,wmts-multi-dimensional,gdal
+      - EXTRA_JAVA_OPTS=-Xms1G -Xmx2G
+    volumes:
+      - ./geoserver_data:/opt/geoserver_data/:Z
+      - ./additional_libs:/opt/additional_libs:Z # by mounting this we can install libs from host on startup
+
   db:
     image: postgis/postgis
     restart: always
@@ -18,27 +47,19 @@ services:
     expose:
       - 5433
 
-  back:
-    build:
-      context: ./back
-      target: finalApp
-    image: climate/climate-back
-    container_name: climate-backend
-    ports:
-      - 9090:9090
-    depends_on:
-      - db
-    networks:
-      - backdb
-
   front:
-    build: ./front
+    build:
+      context: ./climate-front
+      dockerfile: ./climate-front/Dockerfile
+    volumes:
+      - '.:/climate-front'
+      - '/climate-front/node_modules'
     image: climate/climate-front
     container_name: climate-frontend
     ports:
-      - 8887:8887
-    depends_on:
-      - back
+      - '8887:8887'
+    # depends_on:
+    #   - back
     networks:
       - frontback
 
