@@ -8,13 +8,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 COPY environment.yml /notebooks/
 
-# RUN conda env create -f environment.yml
-
-# ADD fonts /usr/share/fonts/truetype/
-
-# RUN fc-cache
-# RUN fc-list
-
-
 VOLUME /notebooks
 WORKDIR /notebooks
+
+RUN conda env create -f environment.yml
+
+
+# VOLUME /notebooks
+# WORKDIR /notebooks

@@ -3,8 +3,9 @@ services:
   jupyter:
     build:
       context: ./jupyter
+    container_name: climate-jupyter
     ports:
-      - "8888:8888"
+      - 8888:8888
     links:
       - db
     volumes:
@@ -12,13 +13,7 @@ services:
 
   geoserver:
     image: docker.osgeo.org/geoserver:2.21.1
-
-    # build:
-    #   context: ./geoserver
-    #   args:
-    #     - GEOSERVER_VERSION=2.21.1
-    #     - CORS_ENABLED=true
-    #     - CORS_ALLOWED_METHODS=GET,POST,PUT,HEAD,OPTIONS
+    container_name: climate-geoserver
     ports:
       - 80:8080
     environment:
@@ -32,7 +27,7 @@ services:
   db:
     image: postgis/postgis
     restart: always
-    container_name: climate-docker-db
+    container_name: climate-db
     environment:
       POSTGRES_PASSWORD: climate_change
       POSTGRES_USER: climate_change
@@ -49,16 +44,12 @@ services:
 
   front:
     build: ./climate-front
-      # context: ./climate-front
-      # dockerfile: Dockerfile
     volumes:
       - './climate-front:/climate-front'
     image: climate/climate-front
     container_name: climate-front
     ports:
-      - '5003:5003'
-    # depends_on:
-    #   - back
+      - '3000:3000'
     networks:
       - frontback
 
